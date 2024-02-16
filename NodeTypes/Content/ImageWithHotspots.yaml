@@ -9,7 +9,7 @@
         nodeTypes:
           'FormatD.HotspotEditor:Content.HotspotWithLayer': true
   ui:
-    label: 'Image with Hotspots'
+    label: i18n
     group: 'general'
   options:
     reloadPageIfChanged: true
