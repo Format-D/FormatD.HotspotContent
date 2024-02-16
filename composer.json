@@ -5,7 +5,7 @@
   "license": "MIT",
   "require": {
     "formatd/hotspot-editor": "dev-main",
-    "formatd/componentLoader": "~1.0.2",
+    "formatd/componentloader": "~1.0.2",
     "neos/nodetypes-basemixins": "*"
   },
   "autoload": {
