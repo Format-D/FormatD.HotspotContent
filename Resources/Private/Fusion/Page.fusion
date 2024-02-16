@@ -1,0 +1,18 @@
+prototype(Neos.Neos:Page) {
+    head {
+        //formatDComponentLoaderInit = ${'<script type="module" src="' + FD.Uri.hashedResource('JavaScript/main.bundle.js', Configuration.setting('FormatD.DesignSystem.sitePackageName')) + '" ></script>'}
+		formatDComponentLoaderInit = Neos.Fusion:ResourceUri {
+			package = 'FormatD.HotspotContent'
+			path = 'JavaScript/main.bundle.js'
+			@process.makeJsTag = ${'<script type="module" src="' + value + '" ></script>'}
+		}
+		formatDComponentLoaderInit.@position = 'end'
+
+
+		formatDComponentLoaderCss = Neos.Fusion:ResourceUri {
+			package = 'FormatD.HotspotContent'
+			path = 'StyleSheets/Root.css'
+			@process.makeJsTag = ${'<link rel="stylesheet" href="' + value + '" />'}
+		}
+    }
+}

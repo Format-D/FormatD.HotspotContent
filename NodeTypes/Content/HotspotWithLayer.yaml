@@ -1,0 +1,20 @@
+
+'FormatD.HotspotContent:Content.HotspotWithLayer':
+  superTypes:
+    'FormatD.HotspotEditor:Content.Hotspot': true
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          'FormatD.HotspotContent:Content.HotspotWithLayer': false
+          'FormatD.HotspotContent:Content.ImageWithHotspots': false
+  ui:
+    group: 'general'
+    label: 'Hotspot (Layer)'
+    inspector:
+      groups:
+        document:
+          label: 'Hotspot (Layer)'
+  properties:
+    link: []

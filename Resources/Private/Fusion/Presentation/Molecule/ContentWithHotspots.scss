@@ -1,0 +1,42 @@
+
+@import "@packages/Application/FormatD.HotspotEditor/Resources/Private/Fusion/Presentation/Molecule/ContentWithHotspots.scss";
+@import "@packages/Application/FormatD.HotspotEditor/Resources/Private/Fusion/Presentation/Atom/Hotspot.scss";
+
+.hotspots-area {
+	> figure {
+		.content-img {
+			@apply mb-0
+		}
+	}
+
+	.hotspots-container {
+		@apply flex items-center justify-center;
+
+		&:hover {
+			&:after {
+				@apply opacity-100 rounded-md;
+			}
+		}
+
+		&:after {
+			@apply absolute inset-0 w-full h-full z-10 opacity-0;
+			content: '';
+			background: rgba(47, 47, 47, 0.5);
+			mix-blend-mode: multiply;
+			transition: opacity 0.3s linear;
+		}
+	}
+}
+
+.royal-dark,
+.dark {
+	.hotspots-area {
+		.hotspots-container {
+			&:after {
+				background: rgba(255, 255, 255, 0.7);
+				mix-blend-mode: inherit;
+			}
+		}
+	}
+}
+

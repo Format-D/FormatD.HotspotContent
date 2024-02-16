@@ -1,0 +1,19 @@
+prototype(FormatD.HotspotContent:Component.HotspotLayer) < prototype(Neos.Neos:ContentComponent) {
+
+    layerContent = Neos.Neos:ContentCollection {
+        nodePath = 'main'
+    }
+
+    hotspotIdentifier = ${String.md5(q(node).property('_identifier'))}
+    iconNameClose = 'close'
+
+    renderer = afx`
+        <div class.layer="hotspot-layer" data-hotspot-id={props.hotspotIdentifier} @if.hasLayerHotspots={Neos.Node.isOfType(node, 'FormatD.HotspotContent:Content.HotspotWithLayer')} >
+            {props.layerContent}
+            <div class.close="hotspot-close">
+				<svg class="svg-embedded stroke-current size-small" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17l5-5m0 0l5-5m-5 5l5 5m-5-5L7 7"/></svg>
+            </div>
+        </div>
+    `
+
+}
