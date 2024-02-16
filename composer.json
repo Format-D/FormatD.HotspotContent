@@ -3,7 +3,7 @@
   "description": "",
   "type": "neos-package",
   "require": {
-    "formatd/hotspot-editor": "dev-master",
+    "formatd/hotspot-editor": "dev-main",
     "formatd/componentLoader": "~1.0.1",
     "neos/nodetypes-basemixins": "*"
   },
