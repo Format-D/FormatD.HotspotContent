@@ -1,7 +1,7 @@
 prototype(FormatD.HotspotContent:Content.HotspotWithLayer) < prototype(FormatD.HotspotEditor:Content.Hotspot) {
 
 
-    renderer.renderer.content.attributes.class = 'hotspot-link hotspot-link---with-layer'
+    renderer.renderer.attributes.class.hotspotWithLayer = 'hotspot-with-layer'
     renderer.renderer.content.@process.addBackendNotice = ${documentNode.context.inBackend ? value + '<div class="hotspot--backend-notice">Right-Click to open layer</div>' : value}
 
 }

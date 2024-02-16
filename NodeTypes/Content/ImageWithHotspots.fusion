@@ -9,6 +9,7 @@ prototype(FormatD.HotspotContent:Content.ImageWithHotspots) < prototype(Neos.Neo
                 hotspots = Neos.Neos:ContentCollection {
                     nodePath = 'hotspots'
                     content.itemRenderer = FormatD.HotspotContent:Component.HotspotLayer
+					attributes.class.@process.collectionClass = "hotspot-with-layer--collection"
                     @if.hasLayerHotspots = ${q(node).find('[instanceof FormatD.HotspotContent:Content.HotspotWithLayer]').count() > 0}
                 }
             }

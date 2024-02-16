@@ -1,0 +1,67 @@
+* {
+  --layer-bg-color: #ffffff;
+  --layer-box-shadow-mobile: 0 0 3.125rem 3.125rem rgba(0,0,0,0.4);
+  --layer-box-shadow-desktop: 0 0.75rem 1.625rem 0 rgba(62, 69, 91, 0.15);
+  --layer-max-width-lg: 46.25rem;
+  --layer-max-width-xl: 52.5rem;
+}
+
+.hotspot-with-layer {
+  	cursor: pointer;
+}
+
+.hotspot-with-layer--collection {
+  height: 100%;
+}
+
+.hotspot-with-layer--layer {
+  	position: fixed;
+  	inset: 1.25rem;
+  	z-index: 500;
+	width: calc(100vw - 2.5rem);
+  	min-width: 20rem;
+	height: calc(100vh - 2.5rem);
+  	padding: 1.25rem;
+	box-shadow: var(--layer-box-shadow-mobile);
+	background-color: var(--layer-bg-color);
+  	overflow-y: scroll;
+  	display: none;
+  	opacity: 0;
+
+	@media (min-width: 1024px) {
+		position: relative;
+	  	width: 100%;
+	  	max-width: var(--layer-max-width-lg);
+	  	height: auto;
+	  	max-height: calc(100% - 2.5rem);
+	  	padding: 2.5rem;
+	  	box-shadow: var(--layer-box-shadow-desktop);
+	}
+
+	@media (min-width: 1280px) {
+	  	max-width: var(--layer-max-width-xl);
+	}
+
+	&.js--active {
+		display: block;
+		animation: fadeIn 0.5s 0.1s forwards ease-in-out;
+	}
+
+}
+
+.hotspot-with-layer--layer-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	cursor: pointer;
+}
+
+
+@keyframes fadeIn {
+  0% {
+	opacity: 0;
+  }
+  100% {
+	opacity: 1;
+  }
+}

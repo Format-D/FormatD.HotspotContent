@@ -25,7 +25,7 @@ export class ContentWithHotspot {
 		// init backend
 		this.initializeBackend(domSection)
 		// init frontend
-		const hotspotAreas = <NodeListOf<HTMLElement>>domSection.querySelectorAll('.hotspots-area');
+		const hotspotAreas = <NodeListOf<HTMLElement>>domSection.querySelectorAll('.content-with-hotspots');
 		if (hotspotAreas.length < 1) return;
 
 		this.initializeFrontend(domSection, hotspotAreas)
@@ -44,11 +44,11 @@ export class ContentWithHotspot {
 	}
 
 	getLayersForHotspotArea(hotspotArea: HTMLElement) {
-		return Array.from<HTMLElement>(hotspotArea.querySelectorAll('.hotspot-layer'))
+		return Array.from<HTMLElement>(hotspotArea.querySelectorAll('.hotspot-with-layer--layer'))
 	}
 
 	initializeHotspotArea(hotspotArea: HTMLElement) {
-		this.logger.log('initializing hotspot area', hotspotArea);
+		this.logger.log('initializing content-with-hotspots:', hotspotArea);
 
 		const layers = this.getLayersForHotspotArea(hotspotArea)
 		layers.forEach((layer) => {
@@ -61,7 +61,7 @@ export class ContentWithHotspot {
 
 	initializeLayer(hotspotArea: HTMLElement, layer: HTMLElement) {
 		this.logger.log('initializing hotspot layer', layer);
-		layer.querySelector('.hotspot-close').addEventListener('click', _ => {
+		layer.querySelector('.hotspot-with-layer--layer-close').addEventListener('click', _ => {
 			this.deactivateHotspot(layer.dataset.hotspotId, hotspotArea);
 		});
 		const hotspot = <HTMLElement>hotspotArea.querySelector('.hotspot[data-hotspot-id="' + layer.dataset.hotspotId + '"]');
@@ -84,9 +84,9 @@ export class ContentWithHotspot {
 		// disable hotspot dragging in backend:
 		this.draggableHotspots['setEditable'](false); // setEditable is private...why?
 
-		const layer = container.querySelector('.hotspot-layer[data-hotspot-id="' + hotspotId + '"]');
+		const layer = container.querySelector('.hotspot-with-layer--layer[data-hotspot-id="' + hotspotId + '"]');
 		this.logger.log('Activating layer', layer);
-		layer.classList.toggle('active');
+		layer.classList.toggle('js--active');
 		this.toggleHotspotsVisibility(container);
 	}
 
@@ -97,9 +97,9 @@ export class ContentWithHotspot {
 	deactivateHotspot(hotspotId, container) {
 		this.logger.log('Deactivating hotspot', hotspotId);
 
-		const layer = container.querySelector('.hotspot-layer[data-hotspot-id="' + hotspotId + '"]');
+		const layer = container.querySelector('.hotspot-with-layer--layer[data-hotspot-id="' + hotspotId + '"]');
 		this.logger.log('Deactivating layer', layer);
-		layer.classList.toggle('active');
+		layer.classList.toggle('js--active');
 
 		// enable hotspot dragging in backend:
 		this.draggableHotspots['setEditable'](true); // setEditable is private...why?
@@ -114,7 +114,7 @@ export class ContentWithHotspot {
 		if (!window.__ComponentLoaderComponentRegistry.context.isBackend()) {
 			document.addEventListener('click', (event) => {
 				for(const layer of layers) {
-					if(!layer.classList.contains('active') || !layer.contains(event.target)) {
+					if(!layer.classList.contains('js--active') || !layer.contains(event.target)) {
 						continue
 					}
 					if(event.target instanceof HTMLElement && event.target.closest('.hotspot') === null) {
