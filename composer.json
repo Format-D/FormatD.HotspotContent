@@ -4,7 +4,7 @@
   "type": "neos-package",
   "license": "MIT",
   "require": {
-    "formatd/hotspot-editor": "dev-main",
+    "formatd/hotspot-editor": "~2.0.0",
     "formatd/componentloader": "~1.0.2",
     "neos/nodetypes-basemixins": "*"
   },
