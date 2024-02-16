@@ -76,7 +76,7 @@ class Hotspots {
       this.activeMouseUpListener = (mouseEvent) => {
         mouseEvent.preventDefault();
         const containerElement2 = mouseEvent.composedPath().find((element) => {
-          return element.className === "hotspots-container";
+          return element.className === "content-with-hotspots--container";
         });
         this._dispatchHotspotDraggedEvent({
           x: currentPosition.x + offsetPosition.x,
@@ -165,7 +165,7 @@ class ContentWithHotspot {
   }
   initialize(domSection) {
     this.initializeBackend(domSection);
-    const hotspotAreas = domSection.querySelectorAll(".hotspots-area");
+    const hotspotAreas = domSection.querySelectorAll(".content-with-hotspots");
     if (hotspotAreas.length < 1)
       return;
     this.initializeFrontend(domSection, hotspotAreas);
@@ -180,10 +180,10 @@ class ContentWithHotspot {
     });
   }
   getLayersForHotspotArea(hotspotArea) {
-    return Array.from(hotspotArea.querySelectorAll(".hotspot-layer"));
+    return Array.from(hotspotArea.querySelectorAll(".hotspot-with-layer--layer"));
   }
   initializeHotspotArea(hotspotArea) {
-    this.logger.log("initializing hotspot area", hotspotArea);
+    this.logger.log("initializing content-with-hotspots:", hotspotArea);
     const layers = this.getLayersForHotspotArea(hotspotArea);
     layers.forEach((layer) => {
       this.initializeLayer(hotspotArea, layer);
@@ -194,7 +194,7 @@ class ContentWithHotspot {
   }
   initializeLayer(hotspotArea, layer) {
     this.logger.log("initializing hotspot layer", layer);
-    layer.querySelector(".hotspot-close").addEventListener("click", (_) => {
+    layer.querySelector(".hotspot-with-layer--layer-close").addEventListener("click", (_) => {
       this.deactivateHotspot(layer.dataset.hotspotId, hotspotArea);
     });
     const hotspot = hotspotArea.querySelector('.hotspot[data-hotspot-id="' + layer.dataset.hotspotId + '"]');
@@ -212,9 +212,9 @@ class ContentWithHotspot {
   activateHotspot(hotspotId, container) {
     this.logger.log("Activating hotspot", hotspotId);
     this.draggableHotspots["setEditable"](false);
-    const layer = container.querySelector('.hotspot-layer[data-hotspot-id="' + hotspotId + '"]');
+    const layer = container.querySelector('.hotspot-with-layer--layer[data-hotspot-id="' + hotspotId + '"]');
     this.logger.log("Activating layer", layer);
-    layer.classList.toggle("active");
+    layer.classList.toggle("js--active");
     this.toggleHotspotsVisibility(container);
   }
   /**
@@ -223,9 +223,9 @@ class ContentWithHotspot {
    */
   deactivateHotspot(hotspotId, container) {
     this.logger.log("Deactivating hotspot", hotspotId);
-    const layer = container.querySelector('.hotspot-layer[data-hotspot-id="' + hotspotId + '"]');
+    const layer = container.querySelector('.hotspot-with-layer--layer[data-hotspot-id="' + hotspotId + '"]');
     this.logger.log("Deactivating layer", layer);
-    layer.classList.toggle("active");
+    layer.classList.toggle("js--active");
     this.draggableHotspots["setEditable"](true);
     this.toggleHotspotsVisibility(container);
   }
@@ -237,7 +237,7 @@ class ContentWithHotspot {
     if (!window.__ComponentLoaderComponentRegistry.context.isBackend()) {
       document.addEventListener("click", (event) => {
         for (const layer of layers) {
-          if (!layer.classList.contains("active") || !layer.contains(event.target)) {
+          if (!layer.classList.contains("js--active") || !layer.contains(event.target)) {
             continue;
           }
           if (event.target instanceof HTMLElement && event.target.closest(".hotspot") === null) {
