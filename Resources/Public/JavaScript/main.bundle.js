@@ -286,10 +286,7 @@ class ComponentLoader {
 }
 const componentLoader = new ComponentLoader();
 componentLoader.addDefaultImport("FormatD.HotspotContent:Molecule.ContentWithHotspots", () => __vitePreload(() => import("./ContentWithHotspots.chunk.js"), true ? [] : void 0));
-componentLoader.initialize(async (domSection, reason) => {
-  if (document.querySelector("body"))
-    ;
-});
+componentLoader.initialize();
 export {
   AbstractComponentManager as A
 };
