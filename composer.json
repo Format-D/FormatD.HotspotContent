@@ -1,10 +1,11 @@
 {
   "name": "formatd/hotspot-content",
-  "description": "",
+  "description": "Hotspot Content Element for Neos CMS",
   "type": "neos-package",
+  "license": "MIT",
   "require": {
     "formatd/hotspot-editor": "dev-main",
-    "formatd/componentLoader": "~1.0.1",
+    "formatd/componentLoader": "~1.0.2",
     "neos/nodetypes-basemixins": "*"
   },
   "autoload": {

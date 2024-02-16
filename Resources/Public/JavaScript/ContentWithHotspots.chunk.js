@@ -1,4 +1,25 @@
 import { A as AbstractComponentManager } from "./main.bundle.js";
+class Logger {
+  constructor(scope) {
+    this.scope = scope;
+    this.enabled = window.__ComponentLoaderComponentRegistry.context.isDevelopment;
+    this.filterScopes = [];
+  }
+  /**
+   * Logs all provided arguments if enabled
+   */
+  log(...args) {
+    if (this.enabled && (this.filterScopes.length === 0 || this.filterScopes.indexOf(this.scope) !== -1)) {
+      console.log(this.scope + ":", ...args);
+    }
+  }
+  /**
+   * Logs all provided arguments
+   */
+  error(...args) {
+    console.error(this.scope + ":", ...args);
+  }
+}
 class Hotspots {
   constructor(domSection, hotspotNodeTypes = ["FormatD.HotspotEditor:Content.Hotspot"]) {
     this.editable = true;
@@ -129,27 +150,6 @@ class Hotspots {
     if (this.debug) {
       console.log(...arguments);
     }
-  }
-}
-class Logger {
-  constructor(scope) {
-    this.scope = scope;
-    this.enabled = window.__ComponentLoaderComponentRegistry.context.isDevelopment;
-    this.filterScopes = [];
-  }
-  /**
-   * Logs all provided arguments if enabled
-   */
-  log(...args) {
-    if (this.enabled && (this.filterScopes.length === 0 || this.filterScopes.indexOf(this.scope) !== -1)) {
-      console.log(this.scope + ":", ...args);
-    }
-  }
-  /**
-   * Logs all provided arguments
-   */
-  error(...args) {
-    console.error(this.scope + ":", ...args);
   }
 }
 class ContentWithHotspot {

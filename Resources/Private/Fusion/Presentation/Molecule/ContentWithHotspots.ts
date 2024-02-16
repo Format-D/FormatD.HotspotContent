@@ -1,6 +1,7 @@
-import Hotspots from "@packages/Application/FormatD.HotspotEditor/Resources/Private/Scripts/HotspotEditorFrontend/Hotspots"
-import Logger from "./Logger"
+
 import { AbstractComponentManager } from "@packages/Application/FormatD.ComponentLoader/Resources/Private/TypeScript/AbstractComponentManager"
+import Logger from "@packages/Application/FormatD.ComponentLoader/Resources/Private/TypeScript/Logger"
+import Hotspots from "@packages/Application/FormatD.HotspotEditor/Resources/Private/Scripts/HotspotEditorFrontend/Hotspots"
 
 export class ContentWithHotspot {
 

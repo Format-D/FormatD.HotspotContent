@@ -1,4 +1,4 @@
-import 'vite/modulepreload-polyfill';
+
 import './Root.scss';
 
 import { componentLoader } from "@packages/Application/FormatD.ComponentLoader/Resources/Private/TypeScript/ComponentLoader";
