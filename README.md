@@ -22,9 +22,9 @@ Releases and compatibility:
 | 2.0.x           | >= 8.3 < 9        | There is no Version 1.0 to be matching with formatd/hotspot-editor versions |
 
 
-### Screenshots
+### Screencast
 
-tbd.
+https://github.com/Format-D/FormatD.HotspotContent/assets/30659291/fb6c3dfc-04e9-406f-a041-e7716b376ce9
 
 
 ### JS and CSS
